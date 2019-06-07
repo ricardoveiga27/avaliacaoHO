@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1091455575362",
+    "firebase_url": "https://avaliacaoho.firebaseio.com",
+    "project_id": "avaliacaoho",
+    "storage_bucket": "avaliacaoho.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091455575362:android:dc84411af647acb7",
+        "android_client_info": {
+          "package_name": "com.veigaconsultoria.avaliacaoho"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091455575362-bjelq5o78ivmd2vfn8t93h72rlcbdqch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJzxdP82nOChWdC8DPBJMkC7B8IPA7Emw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091455575362-bjelq5o78ivmd2vfn8t93h72rlcbdqch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
