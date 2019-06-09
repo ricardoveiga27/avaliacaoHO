@@ -1,4 +1,4 @@
-package com.veigaconsultoria.avaliacaoho;
+package com.veigaconsultoria.avaliacaoho.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.veigaconsultoria.avaliacaoho.R;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -123,8 +124,8 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Log.i("teste", task.getResult().getUser().getUid());
-                            
-                            saveUserFirebase();
+
+
                             
                         }
                     }

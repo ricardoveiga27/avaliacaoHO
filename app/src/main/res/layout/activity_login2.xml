@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bgcolor"
-    tools:context=".LoginActivity2">
+    tools:context=".activities.LoginActivity2">
 
     <EditText
 

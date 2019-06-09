@@ -14,9 +14,38 @@ public class GrupoHomogeneo {
     private Float iluminancia;
     private String maquinas;
     private String equipamentos;
+    private String photo;
+
+    private String empresaId;
+    private String idGHE;
 
 
 
+
+
+    public String getEmpresaId() {
+        return empresaId;
+    }
+
+    public void setEmpresaId(String empresaId) {
+        this.empresaId = empresaId;
+    }
+
+    public String getIdGHE() {
+        return idGHE;
+    }
+
+    public void setIdGHE(String idGHE) {
+        this.idGHE = idGHE;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
     public String getNomeGhe() {
         return nomeGhe;

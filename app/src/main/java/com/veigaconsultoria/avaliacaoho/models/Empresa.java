@@ -1,17 +1,38 @@
 package com.veigaconsultoria.avaliacaoho.models;
 
+import java.util.List;
+
 public class Empresa {
 
     private  String nome;
     private  String razaoSocial;
     private  String endereco;
+    private String cnpj;
     private  String cidade;
     private  String estado;
     private  Integer qtdEmpregados;
     private  String cnae;
 
+    private String idEmpresa;
 
 
+
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(String idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
 
     public String getNome() {
         return nome;

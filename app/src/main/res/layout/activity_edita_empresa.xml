@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.EditaEmpresaActivity">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nome da empresa"
+        android:id="@+id/edit_text_nome_empresa"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="endereco"
+        android:id="@+id/edit_text_endereco"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="cnpj"
+        android:id="@+id/edit_text_cnpj"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="cidade"
+        android:id="@+id/edit_text_cidade"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="estado"
+        android:id="@+id/edit_text_estado"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="qtdEmpregados"
+        android:id="@+id/edit_text_qtdEmpregados"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="cnae"
+        android:id="@+id/edit_text_cnae"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="razaoSocial"
+        android:id="@+id/edit_text_razaoSocial"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="salvar"
+        android:id="@+id/btn_salvar"/>
+
+
+
+
+    <!--private  String endereco;-->
+    <!--private String cnpj;-->
+    <!--private  String cidade;-->
+    <!--private  String estado;-->
+    <!--private  Integer qtdEmpregados;-->
+    <!--private  String cnae;-->
+
+
+</LinearLayout>
