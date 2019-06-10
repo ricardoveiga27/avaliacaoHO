@@ -1,8 +1,9 @@
 package com.veigaconsultoria.avaliacaoho.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Empresa {
+public class Empresa implements Serializable {
 
     private  String nome;
     private  String razaoSocial;

@@ -16,46 +16,54 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.veigaconsultoria.avaliacaoho.R;
 import com.veigaconsultoria.avaliacaoho.adapters.EmpresaAdapter;
-import com.veigaconsultoria.avaliacaoho.adapters.GrupoHomogeneoAdapter;
+import com.veigaconsultoria.avaliacaoho.adapters.RiscosAdapter;
 import com.veigaconsultoria.avaliacaoho.models.Empresa;
 import com.veigaconsultoria.avaliacaoho.models.GrupoHomogeneo;
+import com.veigaconsultoria.avaliacaoho.models.Riscos;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
-public class GrupoHomogeneoActivity extends AppCompatActivity {
+public class RiscosActivity extends AppCompatActivity {
 
-    private ListView listaGHE;
+    private ListView listaRiscos;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grupo_homogeneo);
+        setContentView(R.layout.activity_riscos);
 
-        listaGHE = findViewById(R.id.list_ghe);
+        listaRiscos = findViewById(R.id.list_riscos);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        final Empresa empresa = (Empresa) getIntent().getSerializableExtra("empresa");
-        db.collection("empresa").document(empresa.getIdEmpresa()).collection("grupoHomogeneo").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        GrupoHomogeneo grupoHomogeneo = (GrupoHomogeneo) getIntent().getSerializableExtra("ghe");
+
+        db.collection("empresa")
+                .document(getIntent()
+                .getStringExtra("empresaId"))
+                .collection("grupoHomogeneo")
+                .document(grupoHomogeneo.getIdGHE())
+                .collection("riscos")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 
-                ArrayList<GrupoHomogeneo> gruposhomogeneos = new ArrayList<>();
+                ArrayList<Riscos> riscos = new ArrayList<>();
 
                 for (QueryDocumentSnapshot doc:queryDocumentSnapshots){
-                    GrupoHomogeneo grupoHomogeneo = doc.toObject(GrupoHomogeneo.class);
-                    grupoHomogeneo.setIdGHE(doc.getId());
+                    Riscos risco = doc.toObject(Riscos.class);
+                    risco.setIdRisco(doc.getId());
 
-                    gruposhomogeneos.add(grupoHomogeneo);
+                    riscos.add(risco);
                 }
 
-                GrupoHomogeneoAdapter adapter = new GrupoHomogeneoAdapter(GrupoHomogeneoActivity.this, gruposhomogeneos, empresa);
-                listaGHE.setAdapter(adapter);
+                RiscosAdapter adapter = new RiscosAdapter(RiscosActivity.this, riscos);
+                listaRiscos.setAdapter(adapter);
             }
         });
 
@@ -66,7 +74,7 @@ public class GrupoHomogeneoActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_ghe, menu);
+        inflater.inflate(R.menu.menu_risco, menu);
         return true;
     }
 
@@ -75,10 +83,13 @@ public class GrupoHomogeneoActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.adcionar_ghe:
-                Empresa empresa = (Empresa) getIntent().getSerializableExtra("empresa");
-                Intent intent = new Intent(this, EditarGHEActivity.class);
-                intent.putExtra("empresaId", empresa.getIdEmpresa());
+            case R.id.nova_risco:
+
+                GrupoHomogeneo grupoHomogeneo = (GrupoHomogeneo) getIntent().getSerializableExtra("ghe");
+
+                Intent intent = new Intent(this, EditaRiscosActivity.class);
+                intent.putExtra("gheId", grupoHomogeneo.getIdGHE());
+                intent.putExtra("empresaId",getIntent().getStringExtra("empresaId") );
                 startActivity(intent);
                 break;
 

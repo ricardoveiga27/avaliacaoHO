@@ -1,9 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.EditarGHEActivity">
+
+    <EditText
+        android:id="@+id/editText_nomeGhe"
+        android:hint="nome ghe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_descricaoGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="descrição do ghe"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editText_nomeGhe" />
+
+
+    <EditText
+        android:id="@+id/editText_qtdEmpGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="quantidade de empregados no ghe"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/editText_descricaoGhe" />
+
+    <EditText
+        android:id="@+id/editText_funcoesGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="funções no ghe"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editText_nomeGhe" />
+
+
+
+    <EditText
+        android:id="@+id/editText_peDirGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Pé direito (m)"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/editText_qtdEmpGhe" />
+
+
+    <EditText
+        android:id="@+id/editText_areaGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Área (m2)"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/editText_peDirGhe" />
+
+
+    <EditText
+        android:id="@+id/editText_ventilacaoGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="tipo de ventilação"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/editText_areaGhe" />
+
+
+    <EditText
+        android:id="@+id/editText_iluminacaoGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="tipo de iluminação"
+
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/editText_ventilacaoGhe" />
+
+
+    <EditText
+        android:id="@+id/editText_revestimentoGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="tipo de revestimentoGhe das paredes"
+
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/editText_iluminacaoGhe" />
+
+
+    <EditText
+        android:id="@+id/editText_pisoGhe"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="tipo de pisoGhe"
+
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/editText_revestimentoGhe" />
+
+    <EditText
+        android:id="@+id/editText_iluminanciaGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="iluminanciaGhe (lux)"
+
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/editText_pisoGhe" />
+
+    <EditText
+        android:id="@+id/editText_maquinasGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="máquinas no local"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editText_iluminanciaGhe"
+
+        />
+
+    <EditText
+        android:id="@+id/editText_equipamentosGhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="equipamentosGhe no local"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editText_iluminanciaGhe"
+        />
+
+    <Button
+        android:id="@+id/btn_salva_ghe"
+        android:text="salvar e adicionar outro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/editText_equipamentosGhe"/>
+
+    <Button
+        android:id="@+id/btn_salva_ghe_avanca"
+        android:text="salvar e finalizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_salva_ghe"/>
+
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>

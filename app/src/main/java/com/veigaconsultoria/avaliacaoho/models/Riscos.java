@@ -3,33 +3,134 @@ package com.veigaconsultoria.avaliacaoho.models;
 public class Riscos {
 
 
-    private  String RiscoEsocial23;
-    private  String descricao;
-    private  String meioDePropagacao;
-    private  String grupo;
-    private  String habtualEventual;
-    private  String continuoIntermitente;
-    private  Boolean quantitativo;
-    private  Float intensidade;
-    private  Float limiteTolerancia;
-    private  String epi;
-    private  String epc;
-    private  String comentario;
-    private  String photo;
+    private String RiscoEsocialRiscos;
+    private String descricaoRiscos;
+    private String meioDePropagacaoRiscos;
+    private String grupoRiscos;
+    private String habtualEventualRiscos;
+    private String continuoIntermitenteRiscos;
+    private Boolean quantitativoRiscos;
+    private Float intensidadeRiscos;
+    private Float limiteToleranciaRiscos;
+    private String epiRiscos;
+    private String epcRiscos;
+    private String comentarioRiscos;
+    private String photoRiscos;
 
-    private String grupoId;
+
     private String idRisco;
 
 
 
 
-    public String getGrupoId() {
-        return grupoId;
+
+
+
+
+    public String getRiscoEsocialRiscos() {
+        return RiscoEsocialRiscos;
     }
 
-    public void setGrupoId(String grupoId) {
-        this.grupoId = grupoId;
+    public void setRiscoEsocialRiscos(String riscoEsocialRiscos) {
+        RiscoEsocialRiscos = riscoEsocialRiscos;
     }
+
+    public String getDescricaoRiscos() {
+        return descricaoRiscos;
+    }
+
+    public void setDescricaoRiscos(String descricaoRiscos) {
+        this.descricaoRiscos = descricaoRiscos;
+    }
+
+    public String getMeioDePropagacaoRiscos() {
+        return meioDePropagacaoRiscos;
+    }
+
+    public void setMeioDePropagacaoRiscos(String meioDePropagacaoRiscos) {
+        this.meioDePropagacaoRiscos = meioDePropagacaoRiscos;
+    }
+
+    public String getGrupoRiscos() {
+        return grupoRiscos;
+    }
+
+    public void setGrupoRiscos(String grupoRiscos) {
+        this.grupoRiscos = grupoRiscos;
+    }
+
+    public String getHabtualEventualRiscos() {
+        return habtualEventualRiscos;
+    }
+
+    public void setHabtualEventualRiscos(String habtualEventualRiscos) {
+        this.habtualEventualRiscos = habtualEventualRiscos;
+    }
+
+    public String getContinuoIntermitenteRiscos() {
+        return continuoIntermitenteRiscos;
+    }
+
+    public void setContinuoIntermitenteRiscos(String continuoIntermitenteRiscos) {
+        this.continuoIntermitenteRiscos = continuoIntermitenteRiscos;
+    }
+
+    public Boolean getQuantitativoRiscos() {
+        return quantitativoRiscos;
+    }
+
+    public void setQuantitativoRiscos(Boolean quantitativoRiscos) {
+        this.quantitativoRiscos = quantitativoRiscos;
+    }
+
+    public Float getIntensidadeRiscos() {
+        return intensidadeRiscos;
+    }
+
+    public void setIntensidadeRiscos(Float intensidadeRiscos) {
+        this.intensidadeRiscos = intensidadeRiscos;
+    }
+
+    public Float getLimiteToleranciaRiscos() {
+        return limiteToleranciaRiscos;
+    }
+
+    public void setLimiteToleranciaRiscos(Float limiteToleranciaRiscos) {
+        this.limiteToleranciaRiscos = limiteToleranciaRiscos;
+    }
+
+    public String getEpiRiscos() {
+        return epiRiscos;
+    }
+
+    public void setEpiRiscos(String epiRiscos) {
+        this.epiRiscos = epiRiscos;
+    }
+
+    public String getEpcRiscos() {
+        return epcRiscos;
+    }
+
+    public void setEpcRiscos(String epcRiscos) {
+        this.epcRiscos = epcRiscos;
+    }
+
+    public String getComentarioRiscos() {
+        return comentarioRiscos;
+    }
+
+    public void setComentarioRiscos(String comentarioRiscos) {
+        this.comentarioRiscos = comentarioRiscos;
+    }
+
+    public String getPhotoRiscos() {
+        return photoRiscos;
+    }
+
+    public void setPhotoRiscos(String photoRiscos) {
+        this.photoRiscos = photoRiscos;
+    }
+
 
     public String getIdRisco() {
         return idRisco;
@@ -38,108 +139,5 @@ public class Riscos {
     public void setIdRisco(String idRisco) {
         this.idRisco = idRisco;
     }
-
-    public String getRiscoEsocial23() {
-        return RiscoEsocial23;
-    }
-
-    public void setRiscoEsocial23(String riscoEsocial23) {
-        RiscoEsocial23 = riscoEsocial23;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getMeioDePropagacao() {
-        return meioDePropagacao;
-    }
-
-    public void setMeioDePropagacao(String meioDePropagacao) {
-        this.meioDePropagacao = meioDePropagacao;
-    }
-
-    public String getGrupo() {
-        return grupo;
-    }
-
-    public void setGrupo(String grupo) {
-        this.grupo = grupo;
-    }
-
-    public String getHabtualEventual() {
-        return habtualEventual;
-    }
-
-    public void setHabtualEventual(String habtualEventual) {
-        this.habtualEventual = habtualEventual;
-    }
-
-    public String getContinuoIntermitente() {
-        return continuoIntermitente;
-    }
-
-    public void setContinuoIntermitente(String continuoIntermitente) {
-        this.continuoIntermitente = continuoIntermitente;
-    }
-
-    public Boolean getQuantitativo() {
-        return quantitativo;
-    }
-
-    public void setQuantitativo(Boolean quantitativo) {
-        this.quantitativo = quantitativo;
-    }
-
-    public Float getIntensidade() {
-        return intensidade;
-    }
-
-    public void setIntensidade(Float intensidade) {
-        this.intensidade = intensidade;
-    }
-
-    public Float getLimiteTolerancia() {
-        return limiteTolerancia;
-    }
-
-    public void setLimiteTolerancia(Float limiteTolerancia) {
-        this.limiteTolerancia = limiteTolerancia;
-    }
-
-    public String getEpi() {
-        return epi;
-    }
-
-    public void setEpi(String epi) {
-        this.epi = epi;
-    }
-
-    public String getEpc() {
-        return epc;
-    }
-
-    public void setEpc(String epc) {
-        this.epc = epc;
-    }
-
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
 }
+

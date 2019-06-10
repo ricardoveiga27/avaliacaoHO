@@ -19,7 +19,7 @@ public class EditaEmpresaActivity extends AppCompatActivity {
 
         final EditText nome = findViewById(R.id.edit_text_nome_empresa);
         final EditText cnpj = findViewById(R.id.edit_text_cnpj);
-        final EditText rezaoSocial = findViewById(R.id.edit_text_razaoSocial);
+        final EditText razaoSocial = findViewById(R.id.edit_text_razaoSocial);
         final EditText endreco = findViewById(R.id.edit_text_endereco);
         final EditText cnae = findViewById(R.id.edit_text_cnae);
         final EditText cidade = findViewById(R.id.edit_text_cidade);
@@ -35,12 +35,15 @@ public class EditaEmpresaActivity extends AppCompatActivity {
                 Empresa empresa = new Empresa();
                     empresa.setNome(nome.getText().toString());
                     empresa.setCnpj(cnpj.getText().toString());
-                    empresa.setRazaoSocial(rezaoSocial.getText().toString());
+                    empresa.setRazaoSocial(razaoSocial.getText().toString());
                     empresa.setEndereco(endreco.getText().toString());
                     empresa.setNome(cnae.getText().toString());
                     empresa.setNome(cidade.getText().toString());
                     empresa.setNome(estado.getText().toString());
                     empresa.setNome(qtdEmpregados.getText().toString());
+
+
+
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 

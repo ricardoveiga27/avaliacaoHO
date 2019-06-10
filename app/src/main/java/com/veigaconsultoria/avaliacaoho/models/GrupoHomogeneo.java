@@ -1,20 +1,22 @@
 package com.veigaconsultoria.avaliacaoho.models;
 
-public class GrupoHomogeneo {
+import java.io.Serializable;
+
+public class GrupoHomogeneo implements Serializable {
 
     private String nomeGhe;
     private String descricao;
-    private Integer qtdEmpGhe;
-    private Float peDir;
-    private Float area;
-    private String ventilacao;
-    private String iluminacao;
-    private String revestimento;
-    private String piso;
-    private Float iluminancia;
-    private String maquinas;
-    private String equipamentos;
-    private String photo;
+    private String qtdEmpGhe;
+    private String funcoesGhe;
+    private String peDirGhe;
+    private String areaGhe;
+    private String ventilacaoGhe;
+    private String iluminacaoGhe;
+    private String revestimentoGhe;
+    private String pisoGhe;
+    private String iluminanciaGhe;
+    private String equipamentosGhe;
+    private String photoRiscos;
 
     private String empresaId;
     private String idGHE;
@@ -23,29 +25,8 @@ public class GrupoHomogeneo {
 
 
 
-    public String getEmpresaId() {
-        return empresaId;
-    }
 
-    public void setEmpresaId(String empresaId) {
-        this.empresaId = empresaId;
-    }
 
-    public String getIdGHE() {
-        return idGHE;
-    }
-
-    public void setIdGHE(String idGHE) {
-        this.idGHE = idGHE;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
 
     public String getNomeGhe() {
         return nomeGhe;
@@ -63,83 +44,107 @@ public class GrupoHomogeneo {
         this.descricao = descricao;
     }
 
-    public Integer getQtdEmpGhe() {
+    public String getQtdEmpGhe() {
         return qtdEmpGhe;
     }
 
-    public void setQtdEmpGhe(Integer qtdEmpGhe) {
+    public void setQtdEmpGhe(String qtdEmpGhe) {
         this.qtdEmpGhe = qtdEmpGhe;
     }
 
-    public Float getPeDir() {
-        return peDir;
+    public String getFuncoesGhe() {
+        return funcoesGhe;
     }
 
-    public void setPeDir(Float peDir) {
-        this.peDir = peDir;
+    public void setFuncoesGhe(String funcoesGhe) {
+        this.funcoesGhe = funcoesGhe;
     }
 
-    public Float getArea() {
-        return area;
+    public String getPeDirGhe() {
+        return peDirGhe;
     }
 
-    public void setArea(Float area) {
-        this.area = area;
+    public void setPeDirGhe(String peDirGhe) {
+        this.peDirGhe = peDirGhe;
     }
 
-    public String getVentilacao() {
-        return ventilacao;
+    public String getAreaGhe() {
+        return areaGhe;
     }
 
-    public void setVentilacao(String ventilacao) {
-        this.ventilacao = ventilacao;
+    public void setAreaGhe(String areaGhe) {
+        this.areaGhe = areaGhe;
     }
 
-    public String getIluminacao() {
-        return iluminacao;
+    public String getVentilacaoGhe() {
+        return ventilacaoGhe;
     }
 
-    public void setIluminacao(String iluminacao) {
-        this.iluminacao = iluminacao;
+    public void setVentilacaoGhe(String ventilacaoGhe) {
+        this.ventilacaoGhe = ventilacaoGhe;
     }
 
-    public String getRevestimento() {
-        return revestimento;
+    public String getIluminacaoGhe() {
+        return iluminacaoGhe;
     }
 
-    public void setRevestimento(String revestimento) {
-        this.revestimento = revestimento;
+    public void setIluminacaoGhe(String iluminacaoGhe) {
+        this.iluminacaoGhe = iluminacaoGhe;
     }
 
-    public String getPiso() {
-        return piso;
+    public String getRevestimentoGhe() {
+        return revestimentoGhe;
     }
 
-    public void setPiso(String piso) {
-        this.piso = piso;
+    public void setRevestimentoGhe(String revestimentoGhe) {
+        this.revestimentoGhe = revestimentoGhe;
     }
 
-    public Float getIluminancia() {
-        return iluminancia;
+    public String getPisoGhe() {
+        return pisoGhe;
     }
 
-    public void setIluminancia(Float iluminancia) {
-        this.iluminancia = iluminancia;
+    public void setPisoGhe(String pisoGhe) {
+        this.pisoGhe = pisoGhe;
     }
 
-    public String getMaquinas() {
-        return maquinas;
+    public String getIluminanciaGhe() {
+        return iluminanciaGhe;
     }
 
-    public void setMaquinas(String maquinas) {
-        this.maquinas = maquinas;
+    public void setIluminanciaGhe(String iluminanciaGhe) {
+        this.iluminanciaGhe = iluminanciaGhe;
     }
 
-    public String getEquipamentos() {
-        return equipamentos;
+    public String getEquipamentosGhe() {
+        return equipamentosGhe;
     }
 
-    public void setEquipamentos(String equipamentos) {
-        this.equipamentos = equipamentos;
+    public void setEquipamentosGhe(String equipamentosGhe) {
+        this.equipamentosGhe = equipamentosGhe;
+    }
+
+    public String getphotoRiscos() {
+        return photoRiscos;
+    }
+
+    public void setphotoRiscos(String photoRiscos) {
+        this.photoRiscos = photoRiscos;
+    }
+
+    public String getEmpresaId() {
+        return empresaId;
+    }
+
+    public void setEmpresaId(String empresaId) {
+        this.empresaId = empresaId;
+    }
+
+    public String getIdGHE() {
+        return idGHE;
+    }
+
+    public void setIdGHE(String idGHE) {
+        this.idGHE = idGHE;
     }
 }

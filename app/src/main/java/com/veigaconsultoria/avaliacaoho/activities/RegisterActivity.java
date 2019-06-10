@@ -38,8 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mEditEmail;
     private EditText mEditSenha;
     private Button mBtnCadastrar;
-    private Button mBtnSelectedPhoto;
-    private ImageView mImagePhoto;
+    private Button mBtnSelectedphotoRiscos;
+    private ImageView mImagephotoRiscos;
 
     private Uri mSelectedUri;
 
@@ -54,11 +54,11 @@ public class RegisterActivity extends AppCompatActivity {
         mEditEmail = findViewById(R.id.email);
         mEditSenha = findViewById(R.id.senha);
         mBtnCadastrar = findViewById(R.id.botaoCadastrar);
-        mBtnSelectedPhoto = findViewById(R.id.btn_seleciona_foto);
-        mImagePhoto = findViewById(R.id.img_foto_logim);
+        mBtnSelectedphotoRiscos = findViewById(R.id.btn_seleciona_foto);
+        mImagephotoRiscos = findViewById(R.id.img_foto_logim);
 
 
-        mBtnSelectedPhoto.setOnClickListener(new View.OnClickListener() {
+        mBtnSelectedphotoRiscos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -87,8 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectedUri);
-                mImagePhoto.setImageDrawable(new BitmapDrawable(bitmap));
-                mBtnSelectedPhoto.setAlpha(0);
+                mImagephotoRiscos.setImageDrawable(new BitmapDrawable(bitmap));
+                mBtnSelectedphotoRiscos.setAlpha(0);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.EditaRiscosActivity">
+
+
+    <EditText
+        android:id="@+id/editText_RiscoEsocialRiscos"
+        android:hint="RiscoEsocialRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_descricaoRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="descricaoRiscos"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editText_RiscoEsocialRiscos" />
+
+
+    <EditText
+        android:id="@+id/editText_meioDePropagacaoRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="meioDePropagacaoRiscos"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/editText_descricaoRiscos" />
+
+
+
+
+    <EditText
+        android:id="@+id/editText_grupoRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="grupoRiscos"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/editText_meioDePropagacaoRiscos" />
+
+
+    <EditText
+        android:id="@+id/editText_habtualEventualRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="habtualEventualRiscos"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/editText_grupoRiscos" />
+
+
+    <EditText
+        android:id="@+id/editText_continuoIntermitenteRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="continuoIntermitenteRiscos"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/editText_habtualEventualRiscos" />
+
+
+    <CheckBox
+        android:id="@+id/editText_quantitativoRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="quantitativoRiscos"
+        app:layout_constraintTop_toBottomOf="@+id/editText_continuoIntermitenteRiscos" />
+
+
+    <EditText
+        android:id="@+id/editText_intensidadeRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="intensidadeRiscos"
+
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/editText_quantitativoRiscos" />
+
+
+    <EditText
+        android:id="@+id/editText_limiteToleranciaRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="limiteToleranciaRiscos"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/editText_intensidadeRiscos" />
+
+    <EditText
+        android:id="@+id/editText_epiRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="epiRiscos"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editText_limiteToleranciaRiscos" />
+
+    <EditText
+        android:id="@+id/editText_epcRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="epcRiscos"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editText_epiRiscos"
+
+        />
+
+    <EditText
+        android:id="@+id/editText_editText_comentarioRiscos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="comentarioRiscos"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/editText_epcRiscos"
+        />
+
+    <Button
+        android:id="@+id/btn_salva_riscos"
+        android:text="salvar e adicionar outro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/editText_editText_comentarioRiscos"/>
+
+
+
+</android.support.constraint.ConstraintLayout>

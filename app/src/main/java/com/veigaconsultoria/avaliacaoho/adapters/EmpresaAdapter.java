@@ -14,7 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.veigaconsultoria.avaliacaoho.R;
+import com.veigaconsultoria.avaliacaoho.activities.EditarGHEActivity;
+import com.veigaconsultoria.avaliacaoho.activities.GrupoHomogeneoActivity;
 import com.veigaconsultoria.avaliacaoho.models.Empresa;
+import com.veigaconsultoria.avaliacaoho.models.GrupoHomogeneo;
 
 import java.util.ArrayList;
 
@@ -40,14 +43,14 @@ public class EmpresaAdapter extends ArrayAdapter<Empresa> {
         nome.setText(elementos.get(position).getNome());
         cnpj.setText(elementos.get(position).getCnpj());
 
-//        rowView.findViewById(R.id.editaEmpresa).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, EditarEmpresaActivity.class);
-//                intent.putExtra("empresa", elementos.get(position));
-//                context.startActivity(intent);
-//            }
-//        });
+        rowView.findViewById(R.id.linha_empresa).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, GrupoHomogeneoActivity.class);
+                intent.putExtra("empresa", elementos.get(position));
+                context.startActivity(intent);
+            }
+        });
 
 //        rowView.findViewById(R.id.editaEmpresa).setOnLongClickListener(new View.OnLongClickListener() {
 //            @Override
@@ -62,8 +65,8 @@ public class EmpresaAdapter extends ArrayAdapter<Empresa> {
 //                                FirebaseFirestore db = FirebaseFirestore.getInstance();
 //                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 //
-//                                db.collection("grupoClienteEmpresa")
-//                                        .document(preferences.getString("grupoId", null))
+//                                db.collection("grupoRiscosClienteEmpresa")
+//                                        .document(preferences.getString("grupoRiscosId", null))
 //                                        .collection("empresas")
 //                                        .document(elementos.get(position).getId()).delete();
 //                            }
