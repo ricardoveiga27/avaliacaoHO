@@ -1,27 +1,24 @@
 package com.veigaconsultoria.avaliacaoho.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.veigaconsultoria.avaliacaoho.R;
-import com.veigaconsultoria.avaliacaoho.adapters.EmpresaAdapter;
 import com.veigaconsultoria.avaliacaoho.adapters.GrupoHomogeneoAdapter;
 import com.veigaconsultoria.avaliacaoho.models.Empresa;
 import com.veigaconsultoria.avaliacaoho.models.GrupoHomogeneo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.Nullable;
 

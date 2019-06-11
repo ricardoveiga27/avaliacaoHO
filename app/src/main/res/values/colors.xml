@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#002196</color>
+    <color name="colorPrimaryDark">#172255</color>
+    <color name="colorAccent">#0678EE</color>
     <color name="white">#ffffff</color>
     <color name="bgcolor">#f9f9f9</color>
+    <color name="bgTelas">#DAE0DDDD</color>
+
+
+    <color name="vermelho">#FF0000</color>
+    <color name="Azul">#0000FF</color>
+    <color name="Verde">#008000</color>
+    <color name="Marron">#8B4513</color>
+
+
+
+
 </resources>

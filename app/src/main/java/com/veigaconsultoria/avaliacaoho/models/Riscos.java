@@ -7,6 +7,7 @@ public class Riscos {
     private String descricaoRiscos;
     private String meioDePropagacaoRiscos;
     private String grupoRiscos;
+    private String tipoRisco;
     private String habtualEventualRiscos;
     private String continuoIntermitenteRiscos;
     private Boolean quantitativoRiscos;
@@ -25,7 +26,13 @@ public class Riscos {
 
 
 
+    public String getTipoRisco() {
+        return tipoRisco;
+    }
 
+    public void setTipoRisco(String tipoRisco) {
+        this.tipoRisco = tipoRisco;
+    }
 
     public String getRiscoEsocialRiscos() {
         return RiscoEsocialRiscos;

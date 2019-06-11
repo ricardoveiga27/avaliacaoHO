@@ -1,160 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.EditarGHEActivity">
 
-    <EditText
-        android:id="@+id/editText_nomeGhe"
+
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="nome ghe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="16dp">
 
-    <EditText
-        android:id="@+id/editText_descricaoGhe"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_nomeGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
+
+
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="descrição do ghe"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editText_nomeGhe" />
+        android:layout_margin="16dp">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_descricaoGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
-    <EditText
-        android:id="@+id/editText_qtdEmpGhe"
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="quantidade de empregados no ghe"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/editText_descricaoGhe" />
+        android:layout_margin="16dp">
 
-    <EditText
-        android:id="@+id/editText_funcoesGhe"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_qtdEmpGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
+
+
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="funções no ghe"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editText_nomeGhe" />
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_funcoesGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
 
-
-    <EditText
-        android:id="@+id/editText_peDirGhe"
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="Pé direito (m)"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@+id/editText_qtdEmpGhe" />
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_peDirGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
 
-    <EditText
-        android:id="@+id/editText_areaGhe"
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="Área (m2)"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@+id/editText_peDirGhe" />
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_areaGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
 
-    <EditText
-        android:id="@+id/editText_ventilacaoGhe"
+
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="tipo de ventilação"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/editText_areaGhe" />
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_ventilacaoGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
 
-    <EditText
-        android:id="@+id/editText_iluminacaoGhe"
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="tipo de iluminação"
+        android:layout_margin="16dp">
 
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/editText_ventilacaoGhe" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_iluminacaoGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
-
-    <EditText
-        android:id="@+id/editText_revestimentoGhe"
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="tipo de revestimentoGhe das paredes"
+        android:layout_margin="16dp">
 
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/editText_iluminacaoGhe" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_revestimentoGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
 
-    <EditText
-        android:id="@+id/editText_pisoGhe"
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="tipo de pisoGhe"
+        android:layout_margin="16dp">
 
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/editText_revestimentoGhe" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_pisoGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
-    <EditText
-        android:id="@+id/editText_iluminanciaGhe"
+
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:hint="iluminanciaGhe (lux)"
+        android:layout_margin="16dp">
 
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/editText_pisoGhe" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_iluminanciaGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
-    <EditText
-        android:id="@+id/editText_maquinasGhe"
+
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="máquinas no local"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editText_iluminanciaGhe"
+        android:layout_margin="16dp">
 
-        />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_maquinasGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
 
-    <EditText
-        android:id="@+id/editText_equipamentosGhe"
+
+    <!--*******************************************************************************************-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="equipamentosGhe no local"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editText_iluminanciaGhe"
-        />
+        android:layout_margin="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_equipamentosGhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--*******************************************************************************************-->
+
 
     <Button
         android:id="@+id/btn_salva_ghe"
         android:text="salvar e adicionar outro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/editText_equipamentosGhe"/>
+        android:textColor="@color/white"
+        android:background="@drawable/bg_botao"
+        android:layout_margin="16dp"/>
 
     <Button
         android:id="@+id/btn_salva_ghe_avanca"
         android:text="salvar e finalizar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_salva_ghe"/>
+        android:textColor="@color/white"
+        android:background="@drawable/bg_botao"
+        android:layout_margin="16dp"/>
 
+    </LinearLayout>
 
+</ScrollView>
 
-
-
-
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>
