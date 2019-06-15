@@ -238,7 +238,35 @@
     <!--*******************************************************************************************-->
 
 
-    <Button
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+            <Button
+                android:id="@+id/takePhoto1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adicionar Imagem"
+                android:layout_marginTop="10dp" />
+
+
+        </LinearLayout>
+
+
+
+
+        <Button
         android:id="@+id/btn_salva_ghe"
         android:text="salvar e adicionar outro"
         android:layout_width="match_parent"

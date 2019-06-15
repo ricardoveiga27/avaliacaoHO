@@ -1,6 +1,8 @@
 package com.veigaconsultoria.avaliacaoho.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GrupoHomogeneo implements Serializable {
 
@@ -18,6 +20,8 @@ public class GrupoHomogeneo implements Serializable {
     private String equipamentosGhe;
     private String photoRiscos;
 
+    private List<String> fotos = new ArrayList<>();
+
     private String empresaId;
     private String idGHE;
 
@@ -27,6 +31,22 @@ public class GrupoHomogeneo implements Serializable {
 
 
 
+
+    public String getPhotoRiscos() {
+        return photoRiscos;
+    }
+
+    public void setPhotoRiscos(String photoRiscos) {
+        this.photoRiscos = photoRiscos;
+    }
+
+    public List<String> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<String> fotos) {
+        this.fotos = fotos;
+    }
 
     public String getNomeGhe() {
         return nomeGhe;

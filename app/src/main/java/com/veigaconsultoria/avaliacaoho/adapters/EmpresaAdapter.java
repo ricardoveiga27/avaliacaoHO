@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.veigaconsultoria.avaliacaoho.R;
 import com.veigaconsultoria.avaliacaoho.activities.EditarGHEActivity;
 import com.veigaconsultoria.avaliacaoho.activities.GrupoHomogeneoActivity;
@@ -52,34 +53,34 @@ public class EmpresaAdapter extends ArrayAdapter<Empresa> {
             }
         });
 
-//        rowView.findViewById(R.id.editaEmpresa).setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View view) {
-//
-//                AlertDialog.Builder alert = new AlertDialog.Builder(context)
-//                        .setTitle("DESEJA REALMENTE EXCLUIR ESSA EMPRESA?")
-//                        .setMessage("ATENÇÃO! \n não será possivel reverter essa exclusão após confirmar.")
-//                        .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-//
-//                                db.collection("grupoRiscosClienteEmpresa")
-//                                        .document(preferences.getString("grupoRiscosId", null))
-//                                        .collection("empresas")
-//                                        .document(elementos.get(position).getId()).delete();
-//                            }
-//                        })
-//                        .setNegativeButton("CANCELAR", null);
-//
-//
-//                alert.create();
-//                alert.show();
-//
-//                return false;
-//            }
-//        });
+        rowView.findViewById(R.id.linha_empresa).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(context)
+                        .setTitle("DESEJA REALMENTE EXCLUIR ESSA EMPRESA?")
+                        .setMessage("ATENÇÃO! \n não será possivel reverter essa exclusão após confirmar.")
+                        .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+                                db.collection("empresa")
+                                        .document(preferences.getString("empresa", null))
+                                        .collection("empresas")
+                                        .document(elementos.get(position).getIdEmpresa()).delete();
+                            }
+                        })
+                        .setNegativeButton("CANCELAR", null);
+
+
+                alert.create();
+                alert.show();
+
+                return false;
+            }
+        });
 
         return rowView;
     }

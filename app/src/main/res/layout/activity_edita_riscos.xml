@@ -1,9 +1,10 @@
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.EditaRiscosActivity">
 
 
@@ -12,7 +13,9 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -22,8 +25,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Risco"
-                android:layout_margin="16dp">
+                android:layout_margin="8dp"
+                android:hint="Risco">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editText_RiscoEsocialRiscos"
@@ -37,45 +40,53 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Selecione o Grupo do Risco Avaliado:"
                 android:layout_gravity="center"
-                android:padding="16dp"/>
+                android:padding="8dp"
+                android:text="Selecione o Grupo do Risco Avaliado:" />
 
             <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
                 android:id="@+id/radio_grupo_risco"
-                >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
                 <RadioButton
                     android:id="@+id/radio_quimico"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="Químico"
-                    android:textColor="@color/vermelho"/>
+                    android:textColor="@color/vermelho" />
+
                 <RadioButton
                     android:id="@+id/radio_fisico"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="Físico"
-                    android:textColor="@color/Verde"/>
+                    android:textColor="@color/Verde" />
+
                 <RadioButton
                     android:id="@+id/radio_biologico"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="Biologico"
-                    android:textColor="@color/Marron"/>
+                    android:textColor="@color/Marron" />
+
                 <RadioButton
                     android:id="@+id/radio_mecanico"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="Mec/Acid"
-                    android:textColor="@color/Azul"/>
+                    android:textColor="@color/Azul" />
             </RadioGroup>
 
             <!--********************** RADIO GROUP ***************************************-->
-
 
 
             <!--*******************************************************************************************-->
@@ -83,8 +94,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Descrição"
-                android:layout_margin="16dp">
+                android:layout_margin="8dp"
+                android:hint="Descrição">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editText_descricaoRiscos"
@@ -99,8 +110,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Meio de Propagação"
-                android:layout_margin="16dp">
+                android:layout_margin="8dp"
+                android:hint="Meio de Propagação">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editText_meioDePropagacaoRiscos"
@@ -110,163 +121,351 @@
             </com.google.android.material.textfield.TextInputLayout>
             <!--*******************************************************************************************-->
 
-            <!--*******************************************************************************************-->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Grupo"
-                android:layout_margin="16dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText_grupoRiscos"
+            <!--********************** RADIO GROUP ***************************************-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <!--*******************************************************************************************-->
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="8dp"
+                        android:text="Selecione a FREQUÊNCIA:" />
+
+                    <RadioGroup
+                        android:id="@+id/radiogroup_frequencia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/radio_habitual"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Habitual" />
+
+                        <RadioButton
+                            android:id="@+id/radio_eventual"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Eventual" />
+
+                    </RadioGroup>
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="8dp"
+                        android:text="Selecione a EXPOSIÇÃO:" />
+
+                    <RadioGroup
+                        android:id="@+id/radiogroup_exposicao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/radio_continua"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Contínua" />
+
+                        <RadioButton
+                            android:id="@+id/radio_intermitente"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Intermitente" />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
 
             <!--********************** RADIO GROUP ***************************************-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Selecione a FREQUÊNCIA:"
-                android:layout_gravity="center"
-                android:padding="16dp"/>
 
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:id="@+id/radiogroup_frequencia"
-                >
-                <RadioButton
-                    android:id="@+id/radio_habitual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Habitual"
-                    />
-                <RadioButton
-                    android:id="@+id/radio_eventual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Eventual"
-                    />
 
-            </RadioGroup>
 
-            <!--********************** RADIO GROUP ***************************************-->
-
-            <!--********************** RADIO GROUP ***************************************-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Selecione o tipo de EXPOSIÇÃO:"
-                android:layout_gravity="center"
-                android:padding="16dp"/>
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:id="@+id/radiogroup_exposicao"
-                >
-                <RadioButton
-                    android:id="@+id/radio_continua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Contínua"
-                    />
-                <RadioButton
-                    android:id="@+id/radio_intermitente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Intermitente"
-                    />
-
-            </RadioGroup>
 
             <!--********************** RADIO GROUP ***************************************-->
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="8dp"
                 android:orientation="horizontal">
-                <CheckBox
-                    android:id="@+id/editText_quantitativoRiscos"
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:hint="quantitativo"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:hint="intensidade">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editText_intensidadeRiscos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-                <EditText
-                    android:id="@+id/editText_intensidadeRiscos"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:hint="intensidade"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1" />
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
 
+                    android:hint="limiteTolerancia">
 
-                <EditText
-                    android:id="@+id/editText_limiteToleranciaRiscos"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:hint="limiteTolerancia"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editText_limiteToleranciaRiscos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
             </LinearLayout>
 
 
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editText_epiRiscos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="epiRiscos"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editText_limiteToleranciaRiscos" />
 
-    <EditText
-        android:id="@+id/editText_epcRiscos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="epcRiscos"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editText_epiRiscos"
+                <TextView
+                    android:id="@+id/texte_seleciona_epi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-        />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Selecione os EPI´s:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText_editText_comentarioRiscos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="comentarioRiscos"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/editText_epcRiscos"
-        />
 
-    <Button
-        android:id="@+id/btn_salva_riscos"
-        android:text="salvar e adicionar outro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/editText_editText_comentarioRiscos"/>
+                <CheckBox
+                    android:id="@+id/epi1_calcado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Calçado de segurança"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/texte_seleciona_epi" />
+
+                <CheckBox
+                    android:id="@+id/epi2_prot_auricular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Protetor Auricular"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/epi1_calcado" />
+
+                <CheckBox
+                    android:id="@+id/epi3_oculos_prot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Óculos de Proteção"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/epi2_prot_auricular" />
+
+                <CheckBox
+                    android:id="@+id/epi4_creme_prot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Creme de Proteção"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/epi3_oculos_prot" />
+
+                <CheckBox
+                    android:id="@+id/epi5_luva_nitriliza"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Luva Nitrílica"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/epi4_creme_prot" />
+
+                <CheckBox
+                    android:id="@+id/epi6_luva_raspa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Luva de Raspa"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/epi5_luva_nitriliza" />
+
+                <CheckBox
+                    android:id="@+id/epi7_cinto_paraquedista"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="Cinto Paraquedista"
+                    app:layout_constraintStart_toEndOf="@+id/epi1_calcado"
+                    app:layout_constraintTop_toTopOf="@+id/epi1_calcado" />
+
+
+                <CheckBox
+                    android:id="@+id/epi8_avental_raspa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avental de Raspa"
+                    app:layout_constraintStart_toStartOf="@+id/epi7_cinto_paraquedista"
+                    app:layout_constraintTop_toBottomOf="@+id/epi7_cinto_paraquedista" />
+
+                <CheckBox
+                    android:id="@+id/epi9_mascara_solda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mascara Solda"
+                    app:layout_constraintStart_toStartOf="@+id/epi7_cinto_paraquedista"
+                    app:layout_constraintTop_toBottomOf="@+id/epi8_avental_raspa" />
+
+                <CheckBox
+                    android:id="@+id/epi10_avental_imper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avental Impermeável"
+                    app:layout_constraintStart_toStartOf="@+id/epi7_cinto_paraquedista"
+                    app:layout_constraintTop_toBottomOf="@+id/epi9_mascara_solda" />
+
+                <CheckBox
+                    android:id="@+id/epi11_bota_imper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bota Impermeável"
+                    app:layout_constraintStart_toStartOf="@+id/epi7_cinto_paraquedista"
+                    app:layout_constraintTop_toBottomOf="@+id/epi10_avental_imper" />
+
+                <CheckBox
+                    android:id="@+id/epi12_respirador_poeira"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Respepirador PFF1"
+                    app:layout_constraintStart_toStartOf="@+id/epi7_cinto_paraquedista"
+                    app:layout_constraintTop_toBottomOf="@+id/epi11_bota_imper" />
+
+                <CheckBox
+                    android:id="@+id/epi13_respirador_vo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Respepirador VO-PFF2"
+                    app:layout_constraintStart_toStartOf="@+id/epi7_cinto_paraquedista"
+                    app:layout_constraintTop_toBottomOf="@+id/epi12_respirador_poeira" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            *******************************************************************************************
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Outros EPIS"
+                android:layout_margin="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_epiRiscos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+            </com.google.android.material.textfield.TextInputLayout>
+            *******************************************************************************************
+
+
+            <!--*******************************************************************************************-->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:hint="EPCS">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_epcRiscos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--*******************************************************************************************-->
+
+
+            <!--*******************************************************************************************-->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:hint="COMENTÁRIOS">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_editText_comentarioRiscos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--*******************************************************************************************-->
+
+
+            <Button
+                android:id="@+id/btn_salva_riscos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Salvar Risco"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_botao"
+                app:layout_constraintTop_toBottomOf="@+id/editText_editText_comentarioRiscos" />
 
         </LinearLayout>
 
     </ScrollView>
 
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

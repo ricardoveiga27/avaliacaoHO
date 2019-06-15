@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.veigaconsultoria.avaliacaoho.R;
 import com.veigaconsultoria.avaliacaoho.activities.RiscosActivity;
 import com.veigaconsultoria.avaliacaoho.models.Empresa;
@@ -26,6 +28,10 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
     private final Context context;
     private final ArrayList<GrupoHomogeneo> elementos;
     private final Empresa empresa;
+
+
+
+
 
 
     public GrupoHomogeneoAdapter(Context context, ArrayList<GrupoHomogeneo> elementos, Empresa empresa) {
@@ -55,36 +61,57 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
             }
         });
 
-//        rowView.findViewById(R.id.editaEmpresa).setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View view) {
-//
-//                AlertDialog.Builder alert = new AlertDialog.Builder(context)
-//                        .setTitle("DESEJA REALMENTE EXCLUIR ESSA EMPRESA?")
-//                        .setMessage("ATENÇÃO! \n não será possivel reverter essa exclusão após confirmar.")
-//                        .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-//
-//                                db.collection("grupoRiscosClienteEmpresa")
-//                                        .document(preferences.getString("grupoRiscosId", null))
-//                                        .collection("empresas")
-//                                        .document(elementos.get(position).getId()).delete();
-//                            }
-//                        })
-//                        .setNegativeButton("CANCELAR", null);
-//
-//
-//                alert.create();
-//                alert.show();
-//
-//                return false;
-//            }
-//        });
+//        *********************  DELETA GHE  ************************************************************************
+        rowView.findViewById(R.id.linha_list_ghe).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(context)
+                        .setTitle("DESEJA REALMENTE EXCLUIR ESSA EMPRESA?")
+                        .setMessage("ATENÇÃO! \n não será possivel reverter essa exclusão após confirmar.")
+                        .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+                                db.collection("grupoRiscosClienteEmpresa")
+                                        .document(preferences.getString("empresaId", null))
+                                        .collection("ghe")
+                                        .document(elementos.get(position).getIdGHE()).delete();
+                            }
+                        })
+                        .setNegativeButton("CANCELAR", null);
+
+
+                alert.create();
+                alert.show();
+
+                return false;
+            }
+        });
+//        *********************  DELETA GHE  ************************************************************************
+        Button btnEnviaGHE = rowView.findViewById(R.id.btn_enviar_ghe);
+
+        btnEnviaGHE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                enviarGrupoHomogeneo();
+
+            }
+        });
 
         return rowView;
+
+
+
     }
+
+    private void enviarGrupoHomogeneo() {
+
+        
+    }
+
 
 }
