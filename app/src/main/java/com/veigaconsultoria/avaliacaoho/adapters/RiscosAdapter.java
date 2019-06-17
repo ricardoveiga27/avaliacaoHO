@@ -33,6 +33,7 @@ public class RiscosAdapter extends ArrayAdapter<Riscos> {
     private final String empresaId;
     private final String gheId;
 
+
     public RiscosAdapter(Context context, ArrayList<Riscos> elementos, String empresaId, String gheId) {
         super(context, R.layout.linha_riscos, elementos);
         this.context = context;
@@ -48,9 +49,12 @@ public class RiscosAdapter extends ArrayAdapter<Riscos> {
 
         View rowView = inflater.inflate(R.layout.linha_riscos, parent, false);
         TextView nomeRisco = (TextView) rowView.findViewById(R.id.text_nome_risco);
-        TextView intensidadeRisco = (TextView) rowView.findViewById(R.id.text_intensidade_risco);
+        TextView descricao = (TextView) rowView.findViewById(R.id.text_desc_risco);
+        TextView tipoRisco = (TextView) rowView.findViewById(R.id.text_tipo_risco);
         nomeRisco.setText(elementos.get(position).getRiscoEsocialRiscos());
-        intensidadeRisco.setText(elementos.get(position).getIntensidadeRiscos().toString());
+        descricao.setText(elementos.get(position).getDescricaoRiscos());
+        tipoRisco.setText(elementos.get(position).getTipoRisco());
+
 
         rowView.findViewById(R.id.risco).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -30,11 +30,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/Azul"
                 android:id="@+id/text_nome_empresa"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="18dp"
                 android:id="@+id/text_cnpj"/>
 
 

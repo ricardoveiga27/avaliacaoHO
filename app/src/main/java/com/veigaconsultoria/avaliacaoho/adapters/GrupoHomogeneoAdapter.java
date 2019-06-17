@@ -125,29 +125,30 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
 
     private void enviarGrupoHomogeneo(final GrupoHomogeneo ghe) {
         String result = "----------- EMPRESA -----------\n\n" +
-                "nome: " + empresa.getNome() + "\n" +
-                "razaoSocial: " + empresa.getRazaoSocial() + "\n" +
-                "endereco: " + empresa.getEndereco() + "\n" +
-                "cnpj: " + empresa.getCnpj() + "\n" +
-                "cidade: " + empresa.getCidade() + "\n" +
-                "estado: " + empresa.getEstado() + "\n" +
-                "qtdEmpregados: " + empresa.getQtdEmpregados() + "\n" +
-                "cnae: " + empresa.getCnae() + "\n";
+                "Nome: " + empresa.getNome() + "\n" +
+                "Razao Social: " + empresa.getRazaoSocial() + "\n" +
+                "Endereço: " + empresa.getEndereco() + "\n" +
+                "CNPJ: " + empresa.getCnpj() + "\n" +
+                "Cidade: " + empresa.getCidade() + "\n" +
+                "Estado: " + empresa.getEstado() + "\n" +
+                "Quantidade de Empregados: " + empresa.getQtdEmpregados() + "\n" +
+                "CNAE: " + empresa.getCnae() + "\n";
 
         result += "\n----------- GHE -----------\n\n";
 
-        result += "nomeGhe: " + ghe.getNomeGhe() + "\n" +
-                "descricao: " + ghe.getDescricao() + "\n" +
-                "qtdEmpGhe: " + ghe.getQtdEmpGhe() + "\n" +
-                "funcoesGhe: " + ghe.getFuncoesGhe() + "\n" +
-                "peDirGhe: " + ghe.getPeDirGhe() + "\n" +
-                "areaGhe: " + ghe.getAreaGhe() + "\n" +
-                "ventilacaoGhe: " + ghe.getVentilacaoGhe() + "\n" +
-                "iluminacaoGhe: " + ghe.getIluminacaoGhe() + "\n" +
-                "revestimentoGhe: " + ghe.getRevestimentoGhe() + "\n" +
-                "pisoGhe: " + ghe.getPisoGhe() + "\n" +
-                "iluminanciaGhe: " + ghe.getIluminanciaGhe() + "\n" +
-                "equipamentosGhe: " + ghe.getEquipamentosGhe() + "\n\n";
+        result += "Nome Ghe: " + ghe.getNomeGhe() + "\n" +
+                "Descrição: " + ghe.getDescricao() + "\n" +
+                "Qnt. Empmpregado Ghe: " + ghe.getQtdEmpGhe() + "\n" +
+                "Funções Ghe: " + ghe.getFuncoesGhe() + "\n" +
+                "Pé Direito Ghe: " + ghe.getPeDirGhe() + "\n" +
+                "àrea Ghe: " + ghe.getAreaGhe() + "\n" +
+                "Ventilação Ghe: " + ghe.getVentilacaoGhe() + "\n" +
+                "Iluminação Ghe: " + ghe.getIluminacaoGhe() + "\n" +
+                "Paredes / Divisões Ghe: " + ghe.getRevestimentoGhe() + "\n" +
+                "Piso Ghe: " + ghe.getPisoGhe() + "\n" +
+                "Iluminancia Ghe: " + ghe.getIluminanciaGhe() + "\n" +
+                "Equipamentos Ghe: " + ghe.getEquipamentosGhe() + "\n\n"
+        ;
 
         if (ghe.getFotos().size() > 0) {
             result += "fotos: \n";
@@ -177,19 +178,19 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
                         for (QueryDocumentSnapshot doc : queryDocumentSnapshots){
                             Riscos risco = doc.toObject(Riscos.class);
 
-                            continueResult += "RiscoEsocialRiscos: " + risco.getRiscoEsocialRiscos() + "\n" +
-                                "descricaoRiscos: " + risco.getDescricaoRiscos() + "\n" +
-                                "meioDePropagacaoRiscos: " + risco.getMeioDePropagacaoRiscos() + "\n" +
-                                "grupoRiscos: " + risco.getGrupoRiscos() + "\n" +
-                                "tipoRisco: " + risco.getTipoRisco() + "\n" +
-                                "habtualEventualRiscos: " + risco.getHabtualEventualRiscos() + "\n" +
-                                "continuoIntermitenteRiscos: " + risco.getContinuoIntermitenteRiscos() + "\n" +
-                                "quantitativoRiscos: " + (risco.getQuantitativoRiscos() != null && risco.getQuantitativoRiscos() ? "Sim" : "Não") + "\n" +
-                                "intensidadeRiscos: " + risco.getIntensidadeRiscos() + "\n" +
-                                "limiteToleranciaRiscos: " + risco.getLimiteToleranciaRiscos() + "\n" +
-                                "epiRiscos: " + risco.getEpiRiscos() + "\n" +
-                                "epcRiscos: " + risco.getEpcRiscos() + "\n" +
-                                "comentarioRiscos: " + risco.getComentarioRiscos() + "\n\n";
+                            continueResult += "Risco: " + risco.getRiscoEsocialRiscos() + "\n" +
+                                "Descrição: " + risco.getDescricaoRiscos() + "\n" +
+                                "Meio de Propagacao: " + risco.getMeioDePropagacaoRiscos() + "\n" +
+                                "Grupo: " + risco.getGrupoRiscos() + "\n" +
+                                "Tipo do Risco: " + risco.getTipoRisco() + "\n" +
+                                "Habitual ou Eventual: " + risco.getHabtualEventualRiscos() + "\n" +
+                                "Continuo ou Intermitente: " + risco.getContinuoIntermitenteRiscos() + "\n" +
+                                "Quantitativo: " + (risco.getQuantitativoRiscos() != null && risco.getQuantitativoRiscos() ? "Sim" : "Não") + "\n" +
+                                "Intensidade: " + risco.getIntensidadeRiscos() + "\n" +
+                                "Limite Tolerancia: " + risco.getLimiteToleranciaRiscos() + "\n" +
+                                "Epi: " + risco.getEpiRiscos() + "\n" +
+                                "Epc: " + risco.getEpcRiscos() + "\n" +
+                                "Comentarios: " + risco.getComentarioRiscos() + "\n\n";
                         }
 
                         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
