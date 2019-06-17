@@ -25,13 +25,6 @@ public class GrupoHomogeneo implements Serializable {
     private String empresaId;
     private String idGHE;
 
-
-
-
-
-
-
-
     public String getPhotoRiscos() {
         return photoRiscos;
     }
@@ -142,14 +135,6 @@ public class GrupoHomogeneo implements Serializable {
 
     public void setEquipamentosGhe(String equipamentosGhe) {
         this.equipamentosGhe = equipamentosGhe;
-    }
-
-    public String getphotoRiscos() {
-        return photoRiscos;
-    }
-
-    public void setphotoRiscos(String photoRiscos) {
-        this.photoRiscos = photoRiscos;
     }
 
     public String getEmpresaId() {

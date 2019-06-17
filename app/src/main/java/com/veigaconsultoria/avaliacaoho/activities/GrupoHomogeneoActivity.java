@@ -33,6 +33,9 @@ public class GrupoHomogeneoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grupo_homogeneo);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("GRUPOS HOMOGÊNEOS");
+
         listaGHE = findViewById(R.id.list_ghe);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -71,6 +74,10 @@ public class GrupoHomogeneoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+            case android.R.id.home:
+                finish();
+                break;
 
             case R.id.adcionar_ghe:
                 Empresa empresa = (Empresa) getIntent().getSerializableExtra("empresa");

@@ -29,7 +29,6 @@ public class LoginActivity2 extends AppCompatActivity {
         mBtnEntrar = findViewById(R.id.botaoEntrar);
         mTxtCriarConta = findViewById(R.id.crieAquiSenha);
 
-
        mTxtCriarConta.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {

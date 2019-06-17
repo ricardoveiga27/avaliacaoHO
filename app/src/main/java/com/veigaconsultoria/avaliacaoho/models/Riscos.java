@@ -1,7 +1,8 @@
 package com.veigaconsultoria.avaliacaoho.models;
 
-public class Riscos {
+import java.io.Serializable;
 
+public class Riscos implements Serializable {
 
     private String RiscoEsocialRiscos;
     private String descricaoRiscos;
@@ -17,14 +18,7 @@ public class Riscos {
     private String epcRiscos;
     private String comentarioRiscos;
     private String photoRiscos;
-
-
     private String idRisco;
-
-
-
-
-
 
     public String getTipoRisco() {
         return tipoRisco;

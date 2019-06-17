@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,13 +23,16 @@ public class EditaRiscosActivity extends AppCompatActivity {
     private String epiRiscos;
     private String habtualEventualRiscos;
     private String continuoIntermitenteRiscos;
-
-
+    private String tipoRisco = "Não Informado";
+    private String riscoId = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edita_riscos);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("EDITA RISCO");
 
         final EditText RiscoEsocialRiscos = findViewById(R.id.editText_RiscoEsocialRiscos);
         final EditText descricaoRiscos = findViewById(R.id.editText_descricaoRiscos);
@@ -42,24 +46,18 @@ public class EditaRiscosActivity extends AppCompatActivity {
 
         final EditText epcRiscos = findViewById(R.id.editText_epcRiscos);
         final EditText comentarioRiscos = findViewById(R.id.editText_editText_comentarioRiscos);
-        final String tipoRisco = "0";
-
-
-
 
         grupoRiscos.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                String tipoRisco = "0";
-
                 if (checkedId == R.id.radio_biologico){
                     tipoRisco = "Biológico";
                 }
                 else if (checkedId == R.id.radio_fisico){
-                    tipoRisco = "Físico)";
+                    tipoRisco = "Físico";
                 }
                 else if (checkedId == R.id.radio_quimico){
-                    tipoRisco = "Químico)";
+                    tipoRisco = "Químico";
                 }
                 else if (checkedId == R.id.radio_mecanico){
                     tipoRisco = "Mecânico | Acidentes";
@@ -113,10 +111,6 @@ public class EditaRiscosActivity extends AppCompatActivity {
         adicionaEpei(epi13);
 
         //CONCATENA EPIS************************************************************
-
-
-
-
         RadioGroup frequencia = findViewById(R.id.radiogroup_frequencia);
 
         switch (frequencia.getCheckedRadioButtonId()){
@@ -128,7 +122,6 @@ public class EditaRiscosActivity extends AppCompatActivity {
                 habtualEventualRiscos = "Eventual";
                 break;
         }
-
 
         RadioGroup exposicao = findViewById(R.id.radiogroup_exposicao);
 
@@ -142,11 +135,34 @@ public class EditaRiscosActivity extends AppCompatActivity {
                 break;
         }
 
+        if (getIntent().hasExtra("risco")) {
+            Riscos riscos = (Riscos)getIntent().getSerializableExtra("risco");
 
+            this.riscoId = riscos.getIdRisco();
 
+            RiscoEsocialRiscos.setText(riscos.getRiscoEsocialRiscos());
+            descricaoRiscos.setText(riscos.getDescricaoRiscos());
+            meioDePropagacaoRiscos.setText(riscos.getMeioDePropagacaoRiscos());
+            intensidadeRiscos.setText(String.valueOf(riscos.getIntensidadeRiscos()));
+            limiteToleranciaRiscos.setText(String.valueOf(riscos.getLimiteToleranciaRiscos()));
+            epcRiscos.setText(riscos.getEpcRiscos());
+            comentarioRiscos.setText(riscos.getComentarioRiscos());
 
-
-
+            switch (riscos.getTipoRisco()) {
+                case "Biológico":
+                    ((RadioButton)findViewById(R.id.radio_biologico)).setChecked(true);
+                    break;
+                case "Físico":
+                    ((RadioButton)findViewById(R.id.radio_fisico)).setChecked(true);
+                    break;
+                case "Químico":
+                    ((RadioButton)findViewById(R.id.radio_quimico)).setChecked(true);
+                    break;
+                case "Mecânico | Acidentes":
+                    ((RadioButton)findViewById(R.id.radio_mecanico)).setChecked(true);
+                    break;
+            }
+        }
 
         final Button botaoSalvar = findViewById(R.id.btn_salva_riscos);
         botaoSalvar.setOnClickListener(new View.OnClickListener() {
@@ -166,44 +182,52 @@ public class EditaRiscosActivity extends AppCompatActivity {
                 riscos.setEpcRiscos(epcRiscos.getText().toString());
                 riscos.setComentarioRiscos(comentarioRiscos.getText().toString());
 
-
-
-
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                db.collection("empresa")
-                        .document(getIntent()
-                                .getStringExtra("empresaId"))
-                        .collection("grupoHomogeneo")
-                        .document((getIntent()
-                                .getStringExtra("gheId")))
-                        .collection("riscos").add(riscos);
-                finish();
-
-
-
-                Intent intent = new Intent(EditaRiscosActivity.this, RiscosActivity.class);
-                startActivity(intent);
-
-                finish();
-
+                if (getIntent().hasExtra("risco")) {
+                    db.collection("empresa")
+                            .document(getIntent()
+                                    .getStringExtra("empresaId"))
+                            .collection("grupoHomogeneo")
+                            .document((getIntent()
+                                    .getStringExtra("gheId")))
+                            .collection("riscos")
+                            .document(riscoId)
+                            .set(riscos);
+                } else {
+                    db.collection("empresa")
+                            .document(getIntent()
+                                    .getStringExtra("empresaId"))
+                            .collection("grupoHomogeneo")
+                            .document((getIntent()
+                                    .getStringExtra("gheId")))
+                            .collection("riscos").add(riscos);
+                }
 
                 Toast.makeText(EditaRiscosActivity.this, "Risco cadastrado com sucesso!!!", Toast.LENGTH_LONG).show();
 
+                finish();
             }
         });
-
-
-
-
-
     }
 
     private void adicionaEpei(CheckBox checkBox) {
-
         if (checkBox.isChecked()){
-
             epiRiscos = epiRiscos + ",\n" + checkBox.getText().toString();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                finish();
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

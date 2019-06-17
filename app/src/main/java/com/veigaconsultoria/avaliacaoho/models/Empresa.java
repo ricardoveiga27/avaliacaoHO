@@ -5,19 +5,16 @@ import java.util.List;
 
 public class Empresa implements Serializable {
 
-    private  String nome;
-    private  String razaoSocial;
-    private  String endereco;
+    private String nome;
+    private String razaoSocial;
+    private String endereco;
     private String cnpj;
-    private  String cidade;
-    private  String estado;
-    private  Integer qtdEmpregados;
-    private  String cnae;
+    private String cidade;
+    private String estado;
+    private Integer qtdEmpregados;
+    private String cnae;
 
     private String idEmpresa;
-
-
-
 
     public String getCnpj() {
         return cnpj;

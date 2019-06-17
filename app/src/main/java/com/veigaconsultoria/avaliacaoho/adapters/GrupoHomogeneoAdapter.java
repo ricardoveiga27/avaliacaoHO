@@ -5,22 +5,33 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.veigaconsultoria.avaliacaoho.R;
+import com.veigaconsultoria.avaliacaoho.activities.EditarGHEActivity;
+import com.veigaconsultoria.avaliacaoho.activities.GrupoHomogeneoActivity;
 import com.veigaconsultoria.avaliacaoho.activities.RiscosActivity;
 import com.veigaconsultoria.avaliacaoho.models.Empresa;
 import com.veigaconsultoria.avaliacaoho.models.GrupoHomogeneo;
+import com.veigaconsultoria.avaliacaoho.models.Riscos;
 
 import java.util.ArrayList;
+
+import javax.annotation.Nullable;
 
 
 public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
@@ -28,11 +39,6 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
     private final Context context;
     private final ArrayList<GrupoHomogeneo> elementos;
     private final Empresa empresa;
-
-
-
-
-
 
     public GrupoHomogeneoAdapter(Context context, ArrayList<GrupoHomogeneo> elementos, Empresa empresa) {
         super(context, R.layout.linha_ghe, elementos);
@@ -49,7 +55,6 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
         TextView nome = (TextView) rowView.findViewById(R.id.text_nome_ghe);
 
         nome.setText(elementos.get(position).getNomeGhe());
-
 
         rowView.findViewById(R.id.linha_list_ghe).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +78,10 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-                                db.collection("grupoRiscosClienteEmpresa")
-                                        .document(preferences.getString("empresaId", null))
-                                        .collection("ghe")
+                                db.collection("empresa")
+                                        .document(empresa.getIdEmpresa())
+                                        .collection("grupoHomogeneo")
                                         .document(elementos.get(position).getIdGHE()).delete();
                             }
                         })
@@ -90,27 +94,111 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
                 return false;
             }
         });
+
+        ImageButton btnEditaGHE = rowView.findViewById(R.id.btn_editar_ghe);
+
+        btnEditaGHE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EditarGHEActivity.class);
+                intent.putExtra("empresaId", empresa.getIdEmpresa());
+                intent.putExtra("ghe", elementos.get(position));
+                context.startActivity(intent);
+            }
+        });
+
 //        *********************  DELETA GHE  ************************************************************************
-        Button btnEnviaGHE = rowView.findViewById(R.id.btn_enviar_ghe);
+        ImageButton btnEnviaGHE = rowView.findViewById(R.id.btn_enviar_ghe);
 
         btnEnviaGHE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                enviarGrupoHomogeneo();
+                enviarGrupoHomogeneo(elementos.get(position));
 
             }
         });
 
         return rowView;
 
-
-
     }
 
-    private void enviarGrupoHomogeneo() {
+    private void enviarGrupoHomogeneo(final GrupoHomogeneo ghe) {
+        String result = "----------- EMPRESA -----------\n\n" +
+                "nome: " + empresa.getNome() + "\n" +
+                "razaoSocial: " + empresa.getRazaoSocial() + "\n" +
+                "endereco: " + empresa.getEndereco() + "\n" +
+                "cnpj: " + empresa.getCnpj() + "\n" +
+                "cidade: " + empresa.getCidade() + "\n" +
+                "estado: " + empresa.getEstado() + "\n" +
+                "qtdEmpregados: " + empresa.getQtdEmpregados() + "\n" +
+                "cnae: " + empresa.getCnae() + "\n";
 
-        
+        result += "\n----------- GHE -----------\n\n";
+
+        result += "nomeGhe: " + ghe.getNomeGhe() + "\n" +
+                "descricao: " + ghe.getDescricao() + "\n" +
+                "qtdEmpGhe: " + ghe.getQtdEmpGhe() + "\n" +
+                "funcoesGhe: " + ghe.getFuncoesGhe() + "\n" +
+                "peDirGhe: " + ghe.getPeDirGhe() + "\n" +
+                "areaGhe: " + ghe.getAreaGhe() + "\n" +
+                "ventilacaoGhe: " + ghe.getVentilacaoGhe() + "\n" +
+                "iluminacaoGhe: " + ghe.getIluminacaoGhe() + "\n" +
+                "revestimentoGhe: " + ghe.getRevestimentoGhe() + "\n" +
+                "pisoGhe: " + ghe.getPisoGhe() + "\n" +
+                "iluminanciaGhe: " + ghe.getIluminanciaGhe() + "\n" +
+                "equipamentosGhe: " + ghe.getEquipamentosGhe() + "\n\n";
+
+        if (ghe.getFotos().size() > 0) {
+            result += "fotos: \n";
+
+            for (String foto : ghe.getFotos()) {
+                result += "\n" + foto;
+            }
+
+            result += "\n\n";
+        }
+
+        final String finalResult = result;
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("empresa")
+                .document(empresa.getIdEmpresa())
+                .collection("grupoHomogeneo")
+                .document(ghe.getIdGHE())
+                .collection("riscos")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        String continueResult = finalResult;
+
+                        continueResult += "----------- RISCOS -----------\n\n";
+
+                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots){
+                            Riscos risco = doc.toObject(Riscos.class);
+
+                            continueResult += "RiscoEsocialRiscos: " + risco.getRiscoEsocialRiscos() + "\n" +
+                                "descricaoRiscos: " + risco.getDescricaoRiscos() + "\n" +
+                                "meioDePropagacaoRiscos: " + risco.getMeioDePropagacaoRiscos() + "\n" +
+                                "grupoRiscos: " + risco.getGrupoRiscos() + "\n" +
+                                "tipoRisco: " + risco.getTipoRisco() + "\n" +
+                                "habtualEventualRiscos: " + risco.getHabtualEventualRiscos() + "\n" +
+                                "continuoIntermitenteRiscos: " + risco.getContinuoIntermitenteRiscos() + "\n" +
+                                "quantitativoRiscos: " + (risco.getQuantitativoRiscos() != null && risco.getQuantitativoRiscos() ? "Sim" : "Não") + "\n" +
+                                "intensidadeRiscos: " + risco.getIntensidadeRiscos() + "\n" +
+                                "limiteToleranciaRiscos: " + risco.getLimiteToleranciaRiscos() + "\n" +
+                                "epiRiscos: " + risco.getEpiRiscos() + "\n" +
+                                "epcRiscos: " + risco.getEpcRiscos() + "\n" +
+                                "comentarioRiscos: " + risco.getComentarioRiscos() + "\n\n";
+                        }
+
+                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Empresa: " + empresa.getNome() + ", GHE: " + ghe.getNomeGhe());
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, continueResult);
+                        context.startActivity(Intent.createChooser(sharingIntent,"ENVIAR GHE"));
+                    }
+                });
     }
 
 

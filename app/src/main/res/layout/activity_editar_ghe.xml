@@ -263,18 +263,6 @@
 
         </LinearLayout>
 
-
-
-
-        <Button
-        android:id="@+id/btn_salva_ghe"
-        android:text="salvar e adicionar outro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:background="@drawable/bg_botao"
-        android:layout_margin="16dp"/>
-
     <Button
         android:id="@+id/btn_salva_ghe_avanca"
         android:text="salvar e finalizar"

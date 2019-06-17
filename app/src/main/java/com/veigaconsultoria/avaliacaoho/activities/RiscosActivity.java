@@ -56,15 +56,17 @@ public class RiscosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_riscos);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         listaRiscos = findViewById(R.id.list_riscos);
+        getSupportActionBar().setTitle("RISCOS");
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        GrupoHomogeneo grupoHomogeneo = (GrupoHomogeneo) getIntent().getSerializableExtra("ghe");
+        final GrupoHomogeneo grupoHomogeneo = (GrupoHomogeneo) getIntent().getSerializableExtra("ghe");
 
         db.collection("empresa")
-                .document(getIntent()
-                .getStringExtra("empresaId"))
+                .document(getIntent().getStringExtra("empresaId"))
                 .collection("grupoHomogeneo")
                 .document(grupoHomogeneo.getIdGHE())
                 .collection("riscos")
@@ -81,7 +83,7 @@ public class RiscosActivity extends AppCompatActivity {
                     riscos.add(risco);
                 }
 
-                RiscosAdapter adapter = new RiscosAdapter(RiscosActivity.this, riscos);
+                RiscosAdapter adapter = new RiscosAdapter(RiscosActivity.this, riscos, getIntent().getStringExtra("empresaId"), grupoHomogeneo.getIdGHE());
                 listaRiscos.setAdapter(adapter);
             }
         });
@@ -101,6 +103,10 @@ public class RiscosActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+            case android.R.id.home:
+                finish();
+                break;
 
             case R.id.nova_risco:
 

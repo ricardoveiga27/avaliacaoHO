@@ -4,7 +4,7 @@
 
 
     <item
-        android:title="adiconar"
+        android:title="Adicionar"
         android:id="@+id/adcionar_ghe"
         app:showAsAction="always"/>
 

@@ -10,13 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.veigaconsultoria.avaliacaoho.R;
+import com.veigaconsultoria.avaliacaoho.activities.EditaEmpresaActivity;
 import com.veigaconsultoria.avaliacaoho.activities.EditarGHEActivity;
 import com.veigaconsultoria.avaliacaoho.activities.GrupoHomogeneoActivity;
+import com.veigaconsultoria.avaliacaoho.activities.RiscosActivity;
 import com.veigaconsultoria.avaliacaoho.models.Empresa;
 import com.veigaconsultoria.avaliacaoho.models.GrupoHomogeneo;
 
@@ -64,21 +67,28 @@ public class EmpresaAdapter extends ArrayAdapter<Empresa> {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
                                 db.collection("empresa")
-                                        .document(preferences.getString("empresa", null))
-                                        .collection("empresas")
                                         .document(elementos.get(position).getIdEmpresa()).delete();
                             }
                         })
                         .setNegativeButton("CANCELAR", null);
 
-
                 alert.create();
                 alert.show();
 
                 return false;
+            }
+        });
+
+        ImageButton btnEditaEmpresa = rowView.findViewById(R.id.btn_editar_empresa);
+
+        btnEditaEmpresa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, EditaEmpresaActivity.class);
+                intent.putExtra("empresa", elementos.get(position));
+                context.startActivity(intent);
             }
         });
 
