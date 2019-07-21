@@ -57,9 +57,11 @@ public class RiscosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_riscos);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("RISCOS");
+
 
         listaRiscos = findViewById(R.id.list_riscos);
-        getSupportActionBar().setTitle("RISCOS");
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 

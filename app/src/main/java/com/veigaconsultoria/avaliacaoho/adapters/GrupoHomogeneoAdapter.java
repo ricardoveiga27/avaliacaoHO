@@ -4,16 +4,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.Image;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.EventListener;
@@ -23,7 +18,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.veigaconsultoria.avaliacaoho.R;
 import com.veigaconsultoria.avaliacaoho.activities.EditarGHEActivity;
-import com.veigaconsultoria.avaliacaoho.activities.GrupoHomogeneoActivity;
 import com.veigaconsultoria.avaliacaoho.activities.RiscosActivity;
 import com.veigaconsultoria.avaliacaoho.models.Empresa;
 import com.veigaconsultoria.avaliacaoho.models.GrupoHomogeneo;
@@ -40,11 +34,19 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
     private final ArrayList<GrupoHomogeneo> elementos;
     private final Empresa empresa;
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+//    private GrupoHomogeneo grupoHomogeneo;
+
+    private String resultadoRiscos;
+
     public GrupoHomogeneoAdapter(Context context, ArrayList<GrupoHomogeneo> elementos, Empresa empresa) {
         super(context, R.layout.linha_ghe, elementos);
         this.context = context;
         this.elementos = elementos;
         this.empresa = empresa;
+
+
     }
 
     @Override
@@ -52,9 +54,17 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.linha_ghe, parent, false);
-        TextView nome = (TextView) rowView.findViewById(R.id.text_nome_ghe);
+
+
+        TextView nome = rowView.findViewById(R.id.text_nome_ghe);
 
         nome.setText(elementos.get(position).getNomeGhe());
+
+
+
+        TextView listaRiscosEditText = rowView.findViewById(R.id.editText_riscosGhe);
+
+        encontraRiscos(elementos.get(position), listaRiscosEditText);
 
         rowView.findViewById(R.id.linha_list_ghe).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +133,32 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
 
     }
 
+    private void encontraRiscos(GrupoHomogeneo ghe, final TextView view) {
+        db.collection("empresa")
+                .document(empresa.getIdEmpresa())
+                .collection("grupoHomogeneo")
+                .document(ghe.getIdGHE())
+                .collection("riscos")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+
+                        resultadoRiscos = "riscos ->> ";
+
+                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                            Riscos risco = doc.toObject(Riscos.class);
+
+                            resultadoRiscos = resultadoRiscos +
+                                    risco.getRiscoEsocialRiscos() + " | ";
+                        }
+
+                        view.setText(resultadoRiscos);
+                    }
+
+                });
+    }
+
+
     private void enviarGrupoHomogeneo(final GrupoHomogeneo ghe) {
         String result = "----------- EMPRESA -----------\n\n" +
                 "Nome: " + empresa.getNome() + "\n" +
@@ -162,7 +198,7 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
 
         final String finalResult = result;
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         db.collection("empresa")
                 .document(empresa.getIdEmpresa())
                 .collection("grupoHomogeneo")
@@ -175,32 +211,31 @@ public class GrupoHomogeneoAdapter extends ArrayAdapter<GrupoHomogeneo> {
 
                         continueResult += "----------- RISCOS -----------\n\n";
 
-                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots){
+                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                             Riscos risco = doc.toObject(Riscos.class);
 
                             continueResult += "Risco: " + risco.getRiscoEsocialRiscos() + "\n" +
-                                "Descrição: " + risco.getDescricaoRiscos() + "\n" +
-                                "Meio de Propagacao: " + risco.getMeioDePropagacaoRiscos() + "\n" +
-                                "Grupo: " + risco.getGrupoRiscos() + "\n" +
-                                "Tipo do Risco: " + risco.getTipoRisco() + "\n" +
-                                "Habitual ou Eventual: " + risco.getHabtualEventualRiscos() + "\n" +
-                                "Continuo ou Intermitente: " + risco.getContinuoIntermitenteRiscos() + "\n" +
-                                "Quantitativo: " + (risco.getQuantitativoRiscos() != null && risco.getQuantitativoRiscos() ? "Sim" : "Não") + "\n" +
-                                "Intensidade: " + risco.getIntensidadeRiscos() + "\n" +
-                                "Limite Tolerancia: " + risco.getLimiteToleranciaRiscos() + "\n" +
-                                "Epi: " + risco.getEpiRiscos() + "\n" +
-                                "Epc: " + risco.getEpcRiscos() + "\n" +
-                                "Comentarios: " + risco.getComentarioRiscos() + "\n\n";
+                                    "Descrição: " + risco.getDescricaoRiscos() + "\n" +
+                                    "Meio de Propagacao: " + risco.getMeioDePropagacaoRiscos() + "\n" +
+                                    "Grupo: " + risco.getGrupoRiscos() + "\n" +
+                                    "Tipo do Risco: " + risco.getTipoRisco() + "\n" +
+                                    "Habitual ou Eventual: " + risco.getHabtualEventualRiscos() + "\n" +
+                                    "Continuo ou Intermitente: " + risco.getContinuoIntermitenteRiscos() + "\n" +
+                                    "Quantitativo: " + (risco.getQuantitativoRiscos() != null && risco.getQuantitativoRiscos() ? "Sim" : "Não") + "\n" +
+                                    "Intensidade: " + risco.getIntensidadeRiscos() + "\n" +
+                                    "Limite Tolerancia: " + risco.getLimiteToleranciaRiscos() + "\n" +
+                                    "Epi: " + risco.getEpiRiscos() + "\n" +
+                                    "Epc: " + risco.getEpcRiscos() + "\n" +
+                                    "Comentarios: " + risco.getComentarioRiscos() + "\n\n";
                         }
 
                         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                         sharingIntent.setType("text/plain");
                         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Empresa: " + empresa.getNome() + ", GHE: " + ghe.getNomeGhe());
                         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, continueResult);
-                        context.startActivity(Intent.createChooser(sharingIntent,"ENVIAR GHE"));
+                        context.startActivity(Intent.createChooser(sharingIntent, "ENVIAR GHE"));
                     }
                 });
     }
-
 
 }

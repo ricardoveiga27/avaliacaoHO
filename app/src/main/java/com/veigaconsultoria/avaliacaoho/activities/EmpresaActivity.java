@@ -32,6 +32,10 @@ public class EmpresaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_empresa);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("EMPRESA");
+
+
         listaEmpresas = findViewById(R.id.list_empresa);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
